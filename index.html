@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Talha and terry's EARTHQUAKE SURVIVAL</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="topbar">
+      <div class="title"> <span id="locationLabel"></span></div>
+      <button id="pauseBtn" class="icon-button" aria-label="Pause game" title="Pause game" type="button">Pause  </button>
+      <div id="status" class="status">READY</div>
+    </div>
+    <div id="message" class="message"></div>
+    <div id="hint" class="hint"></div>
+    <div class="crosshair"></div>
+    <div id="interaction" class="interaction"></div>
+    <div class="bottombar">Sorry if the game is not good I lost my old game files and I had to make this in 4hr -Talha</div>
+  </div>
+
+  <!-- Start screen -->
+  <div id="menu" class="overlay">
+    <div class="panel">
+      <h1>EARTHQUAKE SURVIVAL</h1>
+      <h2>SCHOOL SAFETY DRILLS</h2>
+      <div class="scenario-grid" role="group" aria-label="Select scenario">
+        <button type="button" class="scenario selected" data-scenario="classroom" aria-label="Classroom" aria-pressed="true"><span class="scene-symbol" aria-hidden="true"></span>Classroom</button>
+        <button type="button" class="scenario" data-scenario="gym" aria-label="Gym" aria-pressed="false"><span class="scene-symbol" aria-hidden="true"></span>Gym</button>
+        <button type="button" class="scenario" data-scenario="library" aria-label="Library" aria-pressed="false"><span class="scene-symbol" aria-hidden="true"></span>Library</button>
+        <button type="button" class="scenario" data-scenario="Washroom" aria-label="Washroom" aria-pressed="false"><span class="scene-symbol" aria-hidden="true"></span>Washroom</button>
+        <button type="button" class="scenario" data-scenario="recess" aria-label="Recess" aria-pressed="false"><span class="scene-symbol" aria-hidden="true"></span>Recess</button>
+      </div>
+      <p id="scenarioDescription">Take cover under a desk and stay away from windows</p>
+      <div class="motto"></div>
+      <div class="menu-actions"><button id="startBtn" type="button">START DRILL</button><button id="settingsBtn" class="secondary" type="button">SETTINGS</button></div>
+    </div>
+  </div>
+
+  <!-- Completion screen -->
+  <div id="complete" class="overlay hidden">
+    <div class="panel">
+      <h1>DRILL COMPLETE</h1>
+      <p>Good job you survived</p>
+      <div class="motto"></div>
+      <button id="againBtn" type="button">PLAY AGAIN</button>
+      <button id="completeMenuBtn" class="secondary" type="button">MAIN MENU</button>
+    </div>
+  </div>
+
+  <div id="pause" class="overlay hidden">
+    <div class="panel"><h1>PAUSED</h1><p id="pauseLocation"></p>
+      <div class="stack"><button id="resumeBtn" type="button">RESUME</button><button id="pauseSettingsBtn" class="secondary" type="button">SETTINGS</button><button id="restartBtn" class="secondary" type="button">RESTART DRILL</button><button id="mainMenuBtn" class="secondary" type="button">MAIN MENU</button></div>
+    </div>
+  </div>
+
+  <div id="settings" class="overlay hidden">
+    <div class="panel settings-panel"><h1>SETTINGS</h1>
+      <label class="setting" for="sensitivity">Mouse sensitivity <output id="sensitivityValue">1.0×</output><input id="sensitivity" type="range" min="0.3" max="2.5" step="0.1" value="1"></label>
+      <label class="setting" for="volume">Sound volume <output id="volumeValue">60%</output><input id="volume" type="range" min="0" max="100" step="5" value="60"></label>
+      <label class="setting" for="fov">Field of view <output id="fovValue">72°</output><input id="fov" type="range" min="55" max="95" step="1" value="72"></label>
+      <label class="setting toggle" for="cameraShake">Camera shake <input id="cameraShake" type="checkbox" checked></label>
+      <div class="menu-actions"><button id="settingsBackBtn" type="button">DONE</button><button id="resetSettingsBtn" class="secondary" type="button">RESET</button></div>
+    </div>
+  </div>
+
+  <div id="fatal" class="overlay hidden"><div class="panel"><h1>WebGL unavailable</h1><p>Please open this game in a recent version of Chrome or Edge.</p></div></div>
+
+  <script src="game.js"></script>
+</body>
+</html>
